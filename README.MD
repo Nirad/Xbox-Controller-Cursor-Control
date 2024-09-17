@@ -23,4 +23,4 @@ Ce programme permet de contrôler le curseur de la souris à l'aide d'une manett
    Clonez ou téléchargez le dépôt contenant le code source du programme.
 
    ```bash
-   git clone https://github.com/votre-utilisateur/xbox-controller-cursor-control.git
+   git clone https://github.com/Nirad/Xbox-Controller-Cursor-Control.git
