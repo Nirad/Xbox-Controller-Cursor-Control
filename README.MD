@@ -1,5 +1,7 @@
 # Xbox Controller Cursor Control
+![Alt text](screenshot/iconne.png?raw=true "Xbox Controller Cursor Control")
 
+![Alt text]screenshot/app.png?raw=true "Xbox Controller Cursor Control")
 ## Introduction
 
 This program allows you to control the mouse cursor using an Xbox controller. Use the left joystick to move the cursor, and buttons A and B to simulate mouse clicks. The right joystick simulates mouse wheel scrolling.

@@ -24,27 +24,23 @@ namespace Xbox_Controller_Mouse
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Init();
-            // Configurez un Timer ou un autre mécanisme pour mettre à jour l'interface utilisateur
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1); // Mettez à jour toutes les secondes
-            timer.Tick += OnTimerTick;
-            timer.Start();
         }
 
-        private void OnTimerTick(object? sender, EventArgs e)
-        {
-            UpdateStatus();
-        }
 
         private void Init()
         {
+            xController.ControllerStatusChanged += OnControllerStatusChanged!;
             Task.Run(() => xController.Start());
         }
 
+        private void OnControllerStatusChanged(object sender, EventArgs e)
+        {
+            Dispatcher.Invoke(UpdateStatus); // Met à jour l'UI sur le thread principal
+        }
         private void UpdateStatus()
         {
             // Exécuter sur le thread principal pour mettre à jour l'interface utilisateur
-            if (xController.success)
+            if (xController.isConnected)
             {
                 lblStatus.Content = "Controller connected";
                 lblStatus.Foreground = Brushes.Green;

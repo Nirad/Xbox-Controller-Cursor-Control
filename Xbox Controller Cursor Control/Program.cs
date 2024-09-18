@@ -73,8 +73,13 @@ namespace Xbox_Controller_Mouse
 
         public int WHEEL_DELTA = 100; // Valeur standard pour un "tick" de la molette de défilement
         private const float DEADZONE = 0.15f; // Zone morte pour les joysticks
-        public bool success;
+        public bool isConnected = false;
         public int moveStep = 10; // Nombre de pixels à déplacer à chaque mise à jour
+        public event EventHandler<EventArgs>? ControllerStatusChanged;
+        public XController()
+        {
+            ControllerStatusChanged = null;
+        }
         public void Start()
         {
             bool isButtonAPressed = false; // État actuel du bouton "A"
@@ -82,22 +87,26 @@ namespace Xbox_Controller_Mouse
 
             bool isButtonBPressed = false; // État actuel du bouton "B"
             bool wasButtonBPressed = false; // État précédent du bouton "B"
-
             while (true)
             {
                 XINPUT_STATE state;
                 int result = XInputGetState(0, out state); // 0 pour le premier contrôleur
-
                 if (result != 0)
                 {
-                    Console.WriteLine("Controller not connected.");
-                    success = false;
+                    if (isConnected)
+                    {
+                        isConnected = false;
+                        OnControllerStatusChanged(); // Déclenche l'événement de déconnexion
+                    }
                 }
                 else
                 {
-                    success = true;
+                    if (!isConnected)
+                    {
+                        isConnected = true;
+                        OnControllerStatusChanged(); // Déclenche l'événement de connexion
+                    }
                 }
-
                 float leftThumbX = state.Gamepad.sThumbLX;
                 float leftThumbY = state.Gamepad.sThumbLY;
                 float rightThumbY = state.Gamepad.sThumbRY;
@@ -180,6 +189,10 @@ namespace Xbox_Controller_Mouse
                 // Attendre un court instant pour éviter une boucle trop rapide
                 System.Threading.Thread.Sleep(10);
             }
+        }
+        protected virtual void OnControllerStatusChanged()
+        {
+            ControllerStatusChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

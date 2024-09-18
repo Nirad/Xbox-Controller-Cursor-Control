@@ -11,8 +11,9 @@
         Width="250"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent" Loaded="Window_Loaded">
-    <Grid Background="DarkGray">
+        Background="Transparent"
+        Loaded="Window_Loaded">
+    <Grid Background="#FF1C1C1C">
         <!-- Custom title bar -->
         <Border Background="Black" Height="20" VerticalAlignment="Top" HorizontalAlignment="Stretch"
                 MouseLeftButtonDown="Border_MouseLeftButtonDown">
@@ -39,8 +40,9 @@
         <!-- Main content area -->
         <Label x:Name="lblStatus" Content="" Margin="0,35,0,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="Auto"/>
         <Slider x:Name="sliderMouseSptep" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="120" Maximum="20" Minimum="5" SmallChange="1" ValueChanged="Slider_ValueChanged" Value="10" IsEnabled="True"/>
-        <Label Content="Cursor Speed" HorizontalAlignment="Left" Margin="32,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="Cursor Speed" HorizontalAlignment="Left" Margin="32,20,0,0" VerticalAlignment="Top" Foreground="#FFF6EFEF"/>
         <Slider x:Name="sliderScrollSpeed" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="120" Maximum="250" Minimum="50" SmallChange="10" ValueChanged="sliderScrollSpeed_ValueChanged" TickFrequency="10" Value="100" IsEnabled="True"/>
-        <Label Content="Scroll Speed" HorizontalAlignment="Left" Margin="32,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="Scroll Speed" HorizontalAlignment="Left" Margin="32,69,0,0" VerticalAlignment="Top" Foreground="#FFF6EFEF"/>
+        <Image Margin="141,34,10,30" Source="/Images/boutton.png" Stretch="Fill"/>
     </Grid>
 </Window>
