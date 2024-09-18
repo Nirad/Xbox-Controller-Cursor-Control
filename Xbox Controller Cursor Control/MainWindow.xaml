@@ -37,6 +37,10 @@
         </Border>
 
         <!-- Main content area -->
-        <Label x:Name="lblStatus" Content="Label" Margin="0,35,0,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="Auto"/>
+        <Label x:Name="lblStatus" Content="" Margin="0,35,0,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="Auto"/>
+        <Slider x:Name="sliderMouseSptep" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="120" Maximum="20" Minimum="5" SmallChange="1" ValueChanged="Slider_ValueChanged" Value="10" IsEnabled="True"/>
+        <Label Content="Cursor Speed" HorizontalAlignment="Left" Margin="32,20,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sliderScrollSpeed" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="120" Maximum="250" Minimum="50" SmallChange="10" ValueChanged="sliderScrollSpeed_ValueChanged" TickFrequency="10" Value="100" IsEnabled="True"/>
+        <Label Content="Scroll Speed" HorizontalAlignment="Left" Margin="32,69,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -71,13 +71,12 @@ namespace Xbox_Controller_Mouse
         private const uint MOUSEEVENTF_RIGHTUP = 0x0010;
         private const uint MOUSEEVENTF_WHEEL = 0x0800;
 
-        private const int WHEEL_DELTA = 100; // Valeur standard pour un "tick" de la molette de défilement
+        public int WHEEL_DELTA = 100; // Valeur standard pour un "tick" de la molette de défilement
         private const float DEADZONE = 0.15f; // Zone morte pour les joysticks
         public bool success;
+        public int moveStep = 10; // Nombre de pixels à déplacer à chaque mise à jour
         public void Start()
         {
-            int moveStep = 10; // Nombre de pixels à déplacer à chaque mise à jour
-
             bool isButtonAPressed = false; // État actuel du bouton "A"
             bool wasButtonAPressed = false; // État précédent du bouton "A"
 

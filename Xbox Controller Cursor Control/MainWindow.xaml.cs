@@ -1,14 +1,9 @@
-﻿using System.Runtime.InteropServices;
-using System.Text;
+﻿
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using System.Windows.Threading;
 
 namespace Xbox_Controller_Mouse
@@ -18,7 +13,7 @@ namespace Xbox_Controller_Mouse
     /// </summary>
     public partial class MainWindow : Window
     {
-        private XController xController;
+        private XController xController = new XController();
         public MainWindow()
         {
             InitializeComponent();
@@ -43,7 +38,6 @@ namespace Xbox_Controller_Mouse
 
         private void Init()
         {
-            xController = new XController();
             Task.Run(() => xController.Start());
         }
 
@@ -80,5 +74,14 @@ namespace Xbox_Controller_Mouse
             this.Close();
         }
 
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            xController.moveStep = (int)sliderMouseSptep.Value;
+        }
+
+        private void sliderScrollSpeed_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            xController.WHEEL_DELTA = (int)sliderScrollSpeed.Value;
+        }
     }
 }
